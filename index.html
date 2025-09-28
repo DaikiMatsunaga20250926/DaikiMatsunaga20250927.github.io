@@ -1,0 +1,2783 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>打撃成績</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="menu">
+    <a href="index.html" class="btn">打撃成績</a>
+    <a href="score.html" class="btn">スコア</a>
+    <button onclick="clearAllData()">全データクリア</button>
+    <button onclick="exportToCSV()">CSV出力</button>
+  </div>
+
+  <h2>打撃成績</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>打順</th>
+        <th>守備1</th>
+        <th>守備2</th>
+        <th>守備3</th>
+        <th>守備4</th>
+        <th>1回</th>
+        <th>2回</th>
+        <th>3回</th>
+        <th>4回</th>
+        <th>5回</th>
+        <th>6回</th>
+        <th>7回</th>
+        <th>備考欄</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 打順10人分 -->
+      <!-- ↓ループで回すイメージ -->
+      <!-- サンプル1行 -->
+      <tr>
+        <!-- 1番打者 -->
+        <td>1</td>
+        <!-- 守備位置1_選択肢 -->
+        <td>
+          <select name="No1_def1">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置2_選択肢 -->
+        <td>
+          <select name="No1_def2">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置3_選択肢 -->
+        <td>
+          <select name="No1_def3">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置4_選択肢 -->
+        <td>
+          <select name="No1_def4">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 打席内容 -->
+        <!-- 1回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No1_dir1">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No1_bat1">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 2回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No1_dir2">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No1_bat2">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 3回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No1_dir3">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No1_bat3">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 4回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No1_dir4">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No1_bat4">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 5回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No1_dir5">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No1_bat5">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 6回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No1_dir6">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No1_bat6">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 7回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No1_dir7">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No1_bat7">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 備考欄 自由記入形式 -->
+        <td><input type="text" placeholder="備考"></td>
+      </tr>
+      <tr>
+        <!-- 2番打者 -->
+        <td>2</td>
+        <!-- 守備位置1_選択肢 -->
+        <td>
+          <select name="No2_def1">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置2_選択肢 -->
+        <td>
+          <select name="No2_def2">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置3_選択肢 -->
+        <td>
+          <select name="No2_def3">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置4_選択肢 -->
+        <td>
+          <select name="No2_def4">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 打席内容 -->
+        <!-- 1回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No2_dir1">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No2_bat1">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 2回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No2_dir2">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No2_bat2">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 3回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No2_dir3">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No2_bat3">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 4回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No2_dir4">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No2_bat4">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 5回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No2_dir5">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No2_bat5">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 6回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No2_dir6">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No2_bat6">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 7回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No2_dir7">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No2_bat7">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 備考欄 自由記入形式 -->
+        <td><input id="No2_other" type="text" placeholder="備考"></td>
+      </tr>
+      <tr>
+        <!-- 3番打者 -->
+        <td>3</td>
+        <!-- 守備位置1_選択肢 -->
+        <td>
+          <select name="No3_def1">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置2_選択肢 -->
+        <td>
+          <select name="No3_def2">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置3_選択肢 -->
+        <td>
+          <select name="No3_def3">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置4_選択肢 -->
+        <td>
+          <select name="No3_def4">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 打席内容 -->
+        <!-- 1回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No3_dir1">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No3_bat1">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 2回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No3_dir2">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No3_bat2">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 3回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No3_dir3">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No3_bat3">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 4回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No3_dir4">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No3_bat4">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 5回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No3_dir5">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No3_bat5">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 6回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No3_dir6">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No3_bat6">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 7回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No3_dir7">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No3_bat7">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 備考欄 自由記入形式 -->
+        <td><input id="No3_other" type="text" placeholder="備考"></td>
+      </tr>
+      <tr>
+        <!-- 4番打者 -->
+        <td>4</td>
+        <!-- 守備位置1_選択肢 -->
+        <td>
+          <select name="No4_def1">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置2_選択肢 -->
+        <td>
+          <select name="No4_def2">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置3_選択肢 -->
+        <td>
+          <select name="No4_def3">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置4_選択肢 -->
+        <td>
+          <select name="No4_def4">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 打席内容 -->
+        <!-- 1回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No4_dir1">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No4_bat1">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 2回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No4_dir2">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No4_bat2">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 3回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No4_dir3">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No4_bat3">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 4回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No4_dir4">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No4_bat4">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 5回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No4_dir5">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No4_bat5">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 6回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No4_dir6">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No4_bat6">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 7回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No4_dir7">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No4_bat7">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 備考欄 自由記入形式 -->
+        <td><input id="No4_other" type="text" placeholder="備考"></td>
+      </tr>
+      <tr>
+        <!-- 5番打者 -->
+        <td>5</td>
+        <!-- 守備位置1_選択肢 -->
+        <td>
+          <select name="No5_def1">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置2_選択肢 -->
+        <td>
+          <select name="No5_def2">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置3_選択肢 -->
+        <td>
+          <select name="No5_def3">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置4_選択肢 -->
+        <td>
+          <select name="No5_def4">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 打席内容 -->
+        <!-- 1回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No5_dir1">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No5_bat1">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 2回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No5_dir2">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No5_bat2">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 3回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No5_dir3">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No5_bat3">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 4回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No5_dir4">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No5_bat4">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 5回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No5_dir5">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No5_bat5">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 6回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No5_dir6">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No5_bat6">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 7回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No5_dir7">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No5_bat7">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 備考欄 自由記入形式 -->
+        <td><input id="No5_other" type="text" placeholder="備考"></td>
+      </tr>
+      <tr>
+        <!-- 6番打者 -->
+        <td>6</td>
+        <!-- 守備位置1_選択肢 -->
+        <td>
+          <select name="No6_def1">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置2_選択肢 -->
+        <td>
+          <select name="No6_def2">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置3_選択肢 -->
+        <td>
+          <select name="No6_def3">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置4_選択肢 -->
+        <td>
+          <select name="No6_def4">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 打席内容 -->
+        <!-- 1回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No6_dir1">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No6_bat1">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 2回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No6_dir2">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No6_bat2">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 3回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No6_dir3">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No6_bat3">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 4回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No6_dir4">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No6_bat4">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 5回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No6_dir5">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No6_bat5">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 6回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No6_dir6">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No6_bat6">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 7回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No6_dir7">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No6_bat7">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 備考欄 自由記入形式 -->
+        <td><input id="No6_other" type="text" placeholder="備考"></td>
+      </tr>
+      <tr>
+        <!-- 7番打者 -->
+        <td>7</td>
+        <!-- 守備位置1_選択肢 -->
+        <td>
+          <select name="No7_def1">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置2_選択肢 -->
+        <td>
+          <select name="No7_def2">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置3_選択肢 -->
+        <td>
+          <select name="No7_def3">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置4_選択肢 -->
+        <td>
+          <select name="No7_def4">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 打席内容 -->
+        <!-- 1回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No7_dir1">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No7_bat1">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 2回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No7_dir2">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No7_bat2">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 3回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No7_dir3">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No7_bat3">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 4回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No7_dir4">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No7_bat4">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 5回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No7_dir5">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No7_bat5">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 6回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No7_dir6">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No7_bat6">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 7回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No7_dir7">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No7_bat7">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 備考欄 自由記入形式 -->
+        <td><input id="No7_other" type="text" placeholder="備考"></td>
+      </tr>
+      <tr>
+        <!-- 8番打者 -->
+        <td>8</td>
+        <!-- 守備位置1_選択肢 -->
+        <td>
+          <select name="No8_def1">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置2_選択肢 -->
+        <td>
+          <select name="No8_def2">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置3_選択肢 -->
+        <td>
+          <select name="No8_def3">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置4_選択肢 -->
+        <td>
+          <select name="No8_def4">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 打席内容 -->
+        <!-- 1回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No8_dir1">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No8_bat1">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 2回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No8_dir2">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No8_bat2">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 3回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No8_dir3">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No8_bat3">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 4回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No8_dir4">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No8_bat4">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+            </div>
+        </td>
+        <!-- 5回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No8_dir5">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No8_bat5">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 6回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No8_dir6">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No8_bat6">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 7回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No8_dir7">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No8_bat7">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 備考欄 自由記入形式 -->
+        <td><input id="No8_other" type="text" placeholder="備考"></td>
+      </tr>
+      <tr>
+        <!-- 9番打者 -->
+        <td>9</td>
+        <!-- 守備位置1_選択肢 -->
+        <td>
+          <select name="No9_def1">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置2_選択肢 -->
+        <td>
+          <select name="No9_def2">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置3_選択肢 -->
+        <td>
+          <select name="No9_def3">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置4_選択肢 -->
+        <td>
+          <select name="No9_def4">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 打席内容 -->
+        <!-- 1回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No9_dir1">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No9_bat1">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 2回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No9_dir2">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No9_bat2">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 3回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No9_dir3">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No9_bat3">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 4回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No9_dir4">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No9_bat4">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 5回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No9_dir5">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No9_bat5">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 6回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No9_dir6">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No9_bat6">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 7回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No9_dir7">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No9_bat7">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 備考欄 自由記入形式 -->
+        <td><input id="No9_other" type="text" placeholder="備考"></td>
+      </tr>
+      <tr>
+        <!-- 10番打者 -->
+        <td>10</td>
+        <!-- 守備位置1_選択肢 -->
+        <td>
+          <select name="No10_def1">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置2_選択肢 -->
+        <td>
+          <select name="No10_def2">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置3_選択肢 -->
+        <td>
+          <select name="No10_def3">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 守備位置4_選択肢 -->
+        <td>
+          <select name="No10_def4">
+            <option></option>
+            <option>投</option>
+            <option>捕</option>
+            <option>一</option>
+            <option>二</option>
+            <option>三</option>
+            <option>遊</option>
+            <option>左</option>
+            <option>中</option>
+            <option>右</option>
+            <option>EDH</option>
+          </select>
+        </td>
+        <!-- 打席内容 -->
+        <!-- 1回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No10_dir1">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No10_bat1">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 2回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No10_dir2">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No10_bat2">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 3回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No10_dir3">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No10_bat3">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 4回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No10_dir4">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No10_bat4">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 5回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No10_dir5">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No10_bat5">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 6回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No10_dir6">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No10_bat6">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 7回 -->
+        <td>
+          <div class="batting-select">
+            <select name="No10_dir7">
+              <option></option>
+              <option>投</option>
+              <option>捕</option>
+              <option>一</option>
+              <option>二</option>
+              <option>三</option>
+              <option>遊</option>
+              <option>左</option>
+              <option>中</option>
+              <option>右</option>
+            </select>
+            <select name="No10_bat7">
+              <option></option>
+              <option>三振</option>
+              <option>ゴロ</option>
+              <option>フライ</option>
+              <option>バント</option>
+              <option>エラー</option>
+              <option>1Bヒット</option>
+              <option>2Bヒット</option>
+              <option>3Bヒット</option>
+              <option>HR</option>
+              </select>
+            </div>
+        </td>
+        <!-- 備考欄 自由記入形式 -->
+        <td><input id="No10_other" type="text" placeholder="備考"></td>
+      </tr>
+    </tbody>
+  </table>
+  <script src="save-data.js"></script>
+</body>
+</html>

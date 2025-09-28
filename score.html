@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>スコア</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="menu">
+    <a href="index.html" class="btn">打撃成績</a>
+    <a href="score.html" class="btn">スコア</a>
+    <button onclick="clearAllData()">全データクリア</button>
+    <button onclick="exportToCSV()">CSV出力</button>
+  </div>
+
+  <h2>スコア</h2>
+
+  <table class="scoreboard">
+    <thead>
+      <tr>
+        <th>チーム名</th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+        <th>8</th>
+        <th>9</th>
+        <th>計</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input name="TeamA" type="text" placeholder="チームA"></td>
+        <td><input name="TeamA_Inning1" type="text"></td> <!-- 1回 -->
+        <td><input name="TeamA_Inning2" type="text"></td> <!-- 2回 -->
+        <td><input name="TeamA_Inning3" type="text"></td> <!-- 3回 -->
+        <td><input name="TeamA_Inning4" type="text"></td> <!-- 4回 -->
+        <td><input name="TeamA_Inning5" type="text"></td> <!-- 5回 -->
+        <td><input name="TeamA_Inning6" type="text"></td> <!-- 6回 -->
+        <td><input name="TeamA_Inning7" type="text"></td> <!-- 7回 -->
+        <td><input name="TeamA_Inning8" type="text"></td> <!-- 8回 -->
+        <td><input name="TeamA_Inning9" type="text"></td> <!-- 9回 -->
+        <td><input name="TeamA_score" type="text"></td> <!-- 合計 -->
+      </tr>
+      <tr>
+        <td><input name="TeamB" type="text" placeholder="チームB"></td>
+        <td><input name="TeamB_Inning1" type="text"></td> <!-- 1回 -->
+        <td><input name="TeamB_Inning2" type="text"></td> <!-- 2回 -->
+        <td><input name="TeamB_Inning3" type="text"></td> <!-- 3回 -->
+        <td><input name="TeamB_Inning4" type="text"></td> <!-- 4回 -->
+        <td><input name="TeamB_Inning5" type="text"></td> <!-- 5回 -->
+        <td><input name="TeamB_Inning6" type="text"></td> <!-- 6回 -->
+        <td><input name="TeamB_Inning7" type="text"></td> <!-- 7回 -->
+        <td><input name="TeamB_Inning8" type="text"></td> <!-- 8回 -->
+        <td><input name="TeamB_Inning9" type="text"></td> <!-- 9回 -->
+        <td><input name="TeamB_score" type="text"></td> <!-- 合計 -->
+      </tr>
+    </tbody>
+  </table>
+  <script src="save-data.js"></script>
+</body>
+</html>

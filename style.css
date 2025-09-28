@@ -1,0 +1,70 @@
+body {
+  font-family: "Yu Gothic", sans-serif;
+  background: #f5f5f5;
+  margin: 20px;
+}
+
+h2 {
+  margin: 20px 0;
+}
+
+.menu {
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  background: #1e90ff;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #4682b4;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background: #fff;
+  margin-bottom: 20px;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px;
+  text-align: center;
+}
+
+table select, table input {
+  width: 90%;
+  padding: 4px;
+}
+
+.scoreboard {
+  background: #228b22;
+  color: #fff;
+}
+
+.scoreboard th, .scoreboard td {
+  border: 1px solid #fff;
+}
+
+.scoreboard input {
+  width: 40px;
+  text-align: center;
+}
+
+.batting-select {
+  display: flex;
+  gap: 4px; /* 2つのプルダウンの間に少し余白 */
+  justify-content: center; /* 中央寄せ */
+}
+
+.batting-select select {
+  width: auto; /* 必要に応じて幅調整 */
+}
